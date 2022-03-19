@@ -74,8 +74,8 @@ cout<<setw(5)<<setiosflags(ios::right)<<mx;
 ///**********BIGMOD*********
 
 
-int bigmod(ll b,ll ex, int M) {
-	int an=1,rema= b%M;
+int bigmo(ll b,ll ex, ll M) {
+	ll an=1,rema= b%M;
 	while(ex!=0){
 		if(ex%2==1)	an = (an*rema)%M;
 		rema=(rema*rema)%M,ex/=2;                                                                     
@@ -237,3 +237,59 @@ int kruska(int mxOrmn){
 	}return cost;
 }
 ///////////////////////////////////////
+///****************Matrix exponentiaion/////////////////
+
+#include<bits/stdc++.h>
+using namespace std;
+using ll= long long;
+const float PI = acos(-1);
+#define SZ 100000 + 1
+#define F first
+#define S second
+vector<ll> ls;
+typedef struct{
+		ll v[2][2];
+	} Mat;
+Mat entu(Mat a,Mat b,ll M){
+	Mat ha;
+		ha.v[0][0]=(2*M+(a.v[0][0]*b.v[0][0])%M+(a.v[0][1]*b.v[1][0])%M)%M
+		,ha.v[0][1]=(2*M+(a.v[0][0]*b.v[0][1])%M+(a.v[0][1]*b.v[1][1])%M)%M;
+		ha.v[1][0]=(2*M+(a.v[1][0]*b.v[0][0])%M+(a.v[1][1]*b.v[1][0])%M)%M,
+		ha.v[1][1]=(2*M+(a.v[1][0]*b.v[0][1])%M+(a.v[1][1]*b.v[1][1])%M)%M;
+	return ha;
+}
+Mat bigmoMatrx(Mat b,ll ex, ll M) {
+	Mat an=b,rema= b;
+	ex--;
+	while(ex!=0){
+		if(ex%2==1)	an = entu(rema,an,M);
+		rema=entu(rema,rema,M),ex/=2;                                                                     
+	}
+	return an;}
+
+int main(){ios_base::sync_with_stdio(false);
+cin.tie(NULL);//freopen("inp", "r", stdin);
+int tt=1;//cin>>tt;
+for(int _t=1;_t<=tt;_t++){
+	ll a,b,n,md=1000000007;
+	cin>>a>>b>>n;
+	Mat ha;
+	/*
+	 *  [ 1 -1] * [  f(i) ] == [f(i+1)]
+	 * 	[ 1 0]  * [f(i-1) ] == [f(i)]
+	 *  [ 1 -1] ^k * [  f(i) ] == [f(i+k)]
+	 * 	[ 1 0]     * [f(i-1) ] == [f(i+k-1)]
+	 */
+	ha.v[0][0]=1,ha.v[0][1]=-1;
+	ha.v[1][0]=1,ha.v[1][1]=0;
+	if(n==1) cout<<(a+md)%md;
+	else if(n==2) cout<<(b+md)%md;
+	else{
+		 ha=bigmoMatrx(ha,n-2,md);
+		 cout<<((b*ha.v[0][0])%md 
+			+(a*ha.v[0][1])%md+md+md)%md;
+	 }
+}}
+
+
+/////////////////////////////////////
