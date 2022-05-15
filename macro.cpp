@@ -180,6 +180,47 @@ int query(int node, int lo, int hi, int l, int r)
     int p2 = query(2*node+1, mid+1, hi, l, r);
     return max(p1,p2); 
 }
+	
+	
+	
+	/*
+	Seg Tree
+	*/
+void update(ll node, ll lo, ll hi, ll idx, ll val,vector<ll> &A,vector<ll> &tr)
+/* node --1 array start --1 array end --n 
+index to update --idx val to assign --val
+the arr --A the tree --tr
+*/
+
+{
+    if(lo == hi){
+        A[idx] = val;
+        tr[node] = val;
+    }
+    else{
+        ll mid = (lo + hi) / 2;
+        if(lo <= idx and idx <= mid){
+            update(2*node, lo, mid, idx, val,A,tr);}
+        else{
+            update(2*node+1, mid+1, hi, idx, val,A,tr);}
+       tr[node] = tr[2*node] + tr[2*node+1];
+    }
+}
+ll query(ll node, ll lo, ll hi, ll l, ll r,vector<ll> &tr)
+/* node --1 array start --1 array end --n 
+start indx of query --l and end index --r
+the tree --tr
+*/
+{
+    if(r < lo or hi < l)
+		return 0;
+    if(l <= lo and hi <= r)
+		return tr[node];
+    ll mid = (lo + hi) / 2;
+    ll p1 = query(2*node, lo, mid, l, r,tr);
+    ll p2 = query(2*node+1, mid+1, hi, l, r,tr);
+    return p1+p2; 
+}
 
 ///*********Dikstra**************/
 
