@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/git/learn_implement/Sortings.h
+iostream
+-
+ctime
+-
+chrono
+-
+thread
+-
+
+D:/git/learn_implement/main.cpp
+iostream
+-
+Sortings.h
+D:/git/learn_implement/Sortings.h
+
