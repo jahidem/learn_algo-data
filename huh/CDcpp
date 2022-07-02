@@ -1,0 +1,11 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+while(lo<hi){
+			mid=lo+(hi-lo+1)/2;
+			if(ls[mid]>tar) 
+				hi=mid-1;
+			else 
+				lo=mid;
+		}
+}

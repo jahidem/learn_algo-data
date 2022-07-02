@@ -1,0 +1,5 @@
+#include<stdio.h>
+int main(){
+	char ls[6]="asdggf";
+	//scanf("%s",ls);
+printf("%s",ls);}
