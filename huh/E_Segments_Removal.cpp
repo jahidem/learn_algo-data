@@ -5,7 +5,7 @@ int main()
 {
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
-   freopen("inp", "r", stdin);
+  // freopen("inp", "r", stdin);
   ll T = 1; // cin>>T;
   for (ll _t = 1; _t <= T; _t++)
   {
@@ -42,10 +42,9 @@ int main()
     {
       auto nw = Q.top().second;
 
-      int ne = agpr[nw][0],
-          prev = agpr[nw][1];
-      cout << prev << " " << ne << "\n";
-      break;
+      int prev = agpr[nw][0],
+          ne = agpr[nw][1];
+      //cout << prev << " " << ne << "\n";
       Q.pop();
       if (vis[nw])
         continue;
@@ -68,10 +67,10 @@ int main()
       {
         vis[prev] = vis[ne] = 1;
         Q.push({agpr[ne][3] + agpr[prev][3],
-                seg});
-        agpr.push_back({agpr[prev][0], agpr[ne][1], agpr[ne][2],
-                        agpr[ne][3] + agpr[prev][3]});
-        seg++;
+                nw});
+        agpr[nw]={agpr[prev][0], agpr[ne][1], agpr[ne][2],
+                        agpr[ne][3] + agpr[prev][3]};
+        
       }
       an++;
     }
