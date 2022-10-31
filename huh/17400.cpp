@@ -7,7 +7,9 @@ int main()
   cin.tie(NULL);
    //freopen("inp", "r", stdin);
   ll T = 1;  cin>>T;
-  for(int tt=1;tt<=T;tt++){ 
+  for(int TT=1;TT<=T;TT++){ 
+    int n;cin>>n;
+    cout<<(n&1 ? 3:2)<<"\n";
     
   }
 }

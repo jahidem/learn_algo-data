@@ -7,7 +7,11 @@ int main()
   cin.tie(NULL);
    //freopen("inp", "r", stdin);
   ll T = 1;  cin>>T;
-  for(int tt=1;tt<=T;tt++){ 
-    
+  for(int tt=1;tt<=T;tt++){
+    int n;cin>>n; 
+    int lo = 0, hi = n;
+    while(hi-lo>1){
+      
+    }
   }
 }

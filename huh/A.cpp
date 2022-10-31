@@ -1,6 +1,8 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 int main()
 {
-  cout<<"works";
+  int n;cin>>n;
+  cout<<n;
 }

@@ -17,7 +17,12 @@ int main()
       for(int u=0;u<=n-k;u++)
         ls[u] = va;
       ll lol = abs(la[0]%(n-k+1)), v =n-k;
-      while(lol) ls[v]+=(la[0]<0? -1:1),lol--,v--;
+      if(la[0]>0)
+        while(lol) ls[v]++,lol--,v--;
+      else{
+        v=0;
+         while(lol) ls[v]--,lol--,v++;
+      }
     }
     int f=1;
     for(int u=1;u<k;u++)
